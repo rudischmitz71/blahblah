@@ -27,7 +27,7 @@ sudo sed -i "s#</applications>#<application class=\"*\"> <decor>no</decor>  </ap
 mkdir /home/user/.config/lxsession
 mkdir /home/user/.config/lxsession/LXDE-pi
 cp /etc/xdg/lxsession/LXDE-pi/autostart /home/user/.config/lxsession/LXDE-pi/
-sudo echo >> "sh /home/user/myscript.sh"  /home/user/.config/lxsession/LXDE-pi/autostart
+sudo echo "sh /home/user/myscript.sh" >> /home/user/.config/lxsession/LXDE-pi/autostart
 
 cat > /home/user/myscript.sh << EOL
 #!/bin/sh
