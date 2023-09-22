@@ -23,19 +23,18 @@ sudo sed -i "s/<keepBorder>yes/<keepBorder>no/" ~/.config/openbox/rc.xml
 # no decorations
 sudo sed -i "s#</applications>#<application class=\"*\"> <decor>no</decor>  </application> </applications>#" ~/.config/openbox/rc.xml
 
+
 mkdir /home/user/.config/lxsession
 mkdir /home/user/.config/lxsession/LXDE-pi
 cp /etc/xdg/lxsession/LXDE-pi/autostart /home/user/.config/lxsession/LXDE-pi/
 sudo echo >> "sh /home/user/myscript.sh"  /home/user/.config/lxsession/LXDE-pi/autostart
 
-
-
-
 cat > /home/user/myscript.sh << EOL
 #!/bin/sh
 # what this script does: start chromium
 
-chromium-browser --new-window --window-position=0,0 --window-size=3840,2160 --incognito --user-data-dir=/home/pi/.config/chromium2 --enable-features=OverlayScrollbar,OverlayScrollbarFlashAfterAnyScrollUpdate,OverlayScrollbarFlashWhenMouseEnter --app="https://www.tradingview.com/chart/" 
+chromium-browser --new-window --window-position=0,0 --window-size=3840,2160 --incognito --user-data-dir=/home/pi/.config/chromium2 --enable-features=OverlayScrollbar,OverlayScrollbarFlashAfterAnyScrollUpdate,OverlayScrollbarFlashWhenMouseEnter --app="http://10.10.22.200/index.php/welcome/" &
+
 EOL
 
 sudo chmod +x /home/user/myscript.sh
@@ -60,3 +59,5 @@ echo "*/15 * * * * DISPLAY=:0 /home/user/refresh.sh" >> mycron
 #install new cron file
 crontab mycron
 rm mycron
+
+sudo reboot
