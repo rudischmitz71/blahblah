@@ -1,0 +1,45 @@
+#enable ssh server
+sudo systemctl enable ssh 
+sudo systemctl start ssh
+cd ~
+
+#autohide taskbar
+sudo sed -i "s/autohide=.*/autohide=1/" /etc/xdg/lxpanel/LXDE-pi/panels/panel 
+sudo sed -i "s/heightwhenhidden=.*/heightwhenhidden=0/" /etc/xdg/lxpanel/LXDE-pi/panels/panel
+
+#hide mouse when no movement
+sudo apt install unclutter -y
+
+#change background and not show trashcan or mounts
+echo [*] > /home/user/.config/pcmanfm/LXDE-pi/desktop-items-0.conf
+echo desktop_bg=#000000 >> /home/user/.config/pcmanfm/LXDE-pi/desktop-items-0.conf
+echo desktop_shadow=#000000 >> /home/user/.config/pcmanfm/LXDE-pi/desktop-items-0.conf
+echo desktop_fg=#E8E8E8 >> /home/user/.config/pcmanfm/LXDE-pi/desktop-items-0.conf
+echo “desktop_font=PibotoLt 12” >> /home/user/.config/pcmanfm/LXDE-pi/desktop-items-0.conf
+echo wallpaper=/usr/share/rpd-wallpaper/clouds.jpg >> /home/user/.config/pcmanfm/LXDE-pi/desktop-items-0.conf
+echo wallpaper_mode=color >> /home/user/.config/pcmanfm/LXDE-pi/desktop-items-0.conf
+echo show_documents=0 >> /home/user/.config/pcmanfm/LXDE-pi/desktop-items-0.conf
+echo show_trash=0 >> /home/user/.config/pcmanfm/LXDE-pi/desktop-items-0.conf
+echo show_mounts=0 >> /home/user/.config/pcmanfm/LXDE-pi/desktop-items-0.conf
+
+#change setting to openbox
+sudo sed -i "s/window_manager=.*/window_manager=openbox/" /etc/xdg/lxsession/LXDE-pi/desktop.conf
+
+# no window border
+sudo mkdir ~/.config/openbox
+sudo cp /etc/xdg/openbox/rc.xml  ~/.config/openbox/rc.xml
+sudo sed -i "s/<keepBorder>yes/<keepBorder>no/" ~/.config/openbox/rc.xml
+
+# no decorations
+sudo sed -i "s#</applications>#<application class=\"*\"> <decor>no</decor>  </application> </applications>#" ~/.config/openbox/rc.xml
+
+sudo echo >> “sh /home/user/myscript.sh” /etc/xdg/lxsession/LXDE-pi/autostart
+
+
+cat > /home/user/mysript.sh << EOL
+#!/bin/sh
+# what this script does: start chromium
+
+chromium-browser --new-window --window-position=0,0 --window-size=3840,2160 --incognito --user-data-dir=/home/pi/.config/chromium2 --enable-features=OverlayScrollbar,OverlayScrollbarFlashAfterAnyScrollUpdate,OverlayScrollbarFlashWhenMouseEnter --app="http://10.10.22.200/index.php/welcome/" &
+EOL
+sudo chmod +x /home/user/myscript.sh
