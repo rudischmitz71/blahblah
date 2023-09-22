@@ -3,12 +3,13 @@ sudo systemctl enable ssh
 sudo systemctl start ssh
 cd ~
 
+
 #autohide taskbar
 sudo sed -i "s/autohide=.*/autohide=1/" /etc/xdg/lxpanel/LXDE-pi/panels/panel 
 sudo sed -i "s/heightwhenhidden=.*/heightwhenhidden=0/" /etc/xdg/lxpanel/LXDE-pi/panels/panel
 
-#hide mouse when no movement
-sudo apt install unclutter -y
+#hide mouse when no movement allow programmed refresh
+sudo apt install xdotool unclutter -y
 
 
 #change setting to openbox
@@ -30,6 +31,28 @@ cat > /home/user/myscript.sh << EOL
 # what this script does: start chromium
 
 chromium-browser --new-window --window-position=0,0 --window-size=3840,2160 --incognito --user-data-dir=/home/pi/.config/chromium2 --enable-features=OverlayScrollbar,OverlayScrollbarFlashAfterAnyScrollUpdate,OverlayScrollbarFlashWhenMouseEnter --app="http://10.10.22.200/index.php/welcome/" &
+
 EOL
 
 sudo chmod +x /home/user/myscript.sh
+# refresh screen local via keyboard emulation
+cat >  /home/user/refresh.sh  << EOL
+#!/bin/sh
+# blah blah
+
+WID=$(xdotool search --onlyvisible --class chromium|head -1)
+xdotool windowactivate ${WID}
+xdotool key ctrl+F5
+
+EOL
+
+sudo chmod +x refresh.sh 
+
+# refresh every 15 minutes
+#write out current crontab
+crontab -l > mycron
+#echo new cron into cron file
+echo "*/15 * * * * DISPLAY=:0 /home/user/refresh.sh" >> mycron
+#install new cron file
+crontab mycron
+rm mycron
