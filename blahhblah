@@ -33,7 +33,7 @@ cat > /home/user/myscript.sh << EOL
 #!/bin/sh
 # what this script does: start chromium
 
-chromium-browser --new-window --window-position=0,0 --window-size=3840,2160 --incognito --user-data-dir=/home/pi/.config/chromium2 --enable-features=OverlayScrollbar,OverlayScrollbarFlashAfterAnyScrollUpdate,OverlayScrollbarFlashWhenMouseEnter --app="http://10.10.22.200/index.php/welcome/" &
+chromium-browser --new-window --window-position=0,0 --window-size=3840,2160 --incognito --user-data-dir=/home/pi/.config/chromium2 --enable-features=OverlayScrollbar,OverlayScrollbarFlashAfterAnyScrollUpdate,OverlayScrollbarFlashWhenMouseEnter --app="https://www.tradingview.com/chart/" &
 
 EOL
 
