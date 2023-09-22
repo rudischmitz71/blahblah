@@ -23,7 +23,7 @@ sudo sed -i "s/<keepBorder>yes/<keepBorder>no/" ~/.config/openbox/rc.xml
 # no decorations
 sudo sed -i "s#</applications>#<application class=\"*\"> <decor>no</decor>  </application> </applications>#" ~/.config/openbox/rc.xml
 
-sudo echo >> “sh /home/user/myscript.sh” /etc/xdg/lxsession/LXDE-pi/autostart
+sudo echo "sh /home/user/myscript.sh" >>/etc/xdg/lxsession/LXDE-pi/autostart
 
 
 cat > /home/user/myscript.sh << EOL
