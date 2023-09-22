@@ -36,7 +36,7 @@ sudo sed -i "s#</applications>#<application class=\"*\"> <decor>no</decor>  </ap
 sudo echo >> “sh /home/user/myscript.sh” /etc/xdg/lxsession/LXDE-pi/autostart
 
 
-cat > /home/user/mysript.sh << EOL
+cat > /home/user/myscript.sh << EOL
 #!/bin/sh
 # what this script does: start chromium
 
