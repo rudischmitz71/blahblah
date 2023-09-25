@@ -114,6 +114,4 @@ sudo mysql -e "CREATE DATABASE wordpressdb";
 sudo mysql -e "CREATE USER wpuser@localhost IDENTIFIED BY '$passvar'";
 mysql -e "GRANT ALL PRIVILEGES ON wordpressdb.* TO wordpressdb@localhost IDENTIFIED BY '$passvar'";
 
-
-
 sudo reboot
