@@ -38,6 +38,25 @@ chromium-browser --new-window --window-position=0,0 --window-size=3840,2160 --in
 EOL
 
 sudo chmod +x /home/user/myscript.sh
+
+
+## black blackground and disable notifications
+cat > /home/user/.config/pcmanfm/LXDE-pi/desktop-items-0.conf << EOL
+[*]
+desktop_bg=#000000
+desktop_shadow=#000000
+desktop_fg=#E8E8E8
+desktop_font=PibotoLt 12
+wallpaper=/usr/share/rpd-wallpaper/clouds.jpg
+wallpaper_mode=color
+show_documents=0
+show_trash=0
+show_mounts=0
+EOL
+
+
+
+
 # refresh screen local via keyboard emulation
 cat >  /home/user/refresh.sh  << EOL
 #!/bin/sh
