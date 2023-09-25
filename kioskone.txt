@@ -1,3 +1,12 @@
+#get the website url you want to display on the kiosk
+
+#!/bin/bash
+# Ask the user for website
+read -p 'What website to display on the TV include https://: ' webvar
+echo
+echo Thankyou $webvar we now have website to display on the tv
+
+
 #enable ssh server
 sudo systemctl enable ssh 
 sudo systemctl start ssh
@@ -24,24 +33,24 @@ sudo sed -i "s/<keepBorder>yes/<keepBorder>no/" ~/.config/openbox/rc.xml
 sudo sed -i "s#</applications>#<application class=\"*\"> <decor>no</decor>  </application> </applications>#" ~/.config/openbox/rc.xml
 
 
-mkdir /home/user/.config/lxsession
-mkdir /home/user/.config/lxsession/LXDE-pi
-cp /etc/xdg/lxsession/LXDE-pi/autostart /home/user/.config/lxsession/LXDE-pi/
-sudo echo "sh /home/user/myscript.sh" >> /home/user/.config/lxsession/LXDE-pi/autostart
+mkdir /home/$USER/.config/lxsession
+mkdir /home/$USER/.config/lxsession/LXDE-pi
+cp /etc/xdg/lxsession/LXDE-pi/autostart /home/$USER/.config/lxsession/LXDE-pi/
+sudo echo "sh /home/$USER/myscript.sh" >> /home/$USER/.config/lxsession/LXDE-pi/autostart
 
-cat > /home/user/myscript.sh << EOL
+cat > /home/$USER/myscript.sh << EOL
 #!/bin/sh
 # what this script does: start chromium
 
-chromium-browser --new-window --window-position=0,0 --window-size=3840,2160 --incognito --user-data-dir=/home/pi/.config/chromium2 --enable-features=OverlayScrollbar,OverlayScrollbarFlashAfterAnyScrollUpdate,OverlayScrollbarFlashWhenMouseEnter --app="https://www.tradingview.com/chart/" &
+chromium-browser --new-window --window-position=0,0 --window-size=3840,2160 --incognito --user-data-dir=/home/$USER/.config/chromium2 --enable-features=OverlayScrollbar,OverlayScrollbarFlashAfterAnyScrollUpdate,OverlayScrollbarFlashWhenMouseEnter --app=$webvar &
 
 EOL
 
-sudo chmod +x /home/user/myscript.sh
+sudo chmod +x /home/$USER/myscript.sh
 
 
 ## black blackground and disable notifications
-cat > /home/user/.config/pcmanfm/LXDE-pi/desktop-items-0.conf << EOL
+cat > /home/$USER/.config/pcmanfm/LXDE-pi/desktop-items-0.conf << EOL
 [*]
 desktop_bg=#000000
 desktop_shadow=#000000
@@ -58,7 +67,7 @@ EOL
 
 
 # refresh screen local via keyboard emulation
-cat >  /home/user/refresh.sh  << EOL
+cat >  /home/$USER/refresh.sh  << EOL
 #!/bin/sh
 # blah blah
 
@@ -74,7 +83,7 @@ sudo chmod +x refresh.sh
 #write out current crontab
 crontab -l > mycron
 #echo new cron into cron file
-echo "*/15 * * * * DISPLAY=:0 /home/user/refresh.sh" >> mycron
+echo "*/15 * * * * DISPLAY=:0 /home/$USER/refresh.sh" >> mycron
 #install new cron file
 crontab mycron
 rm mycron
