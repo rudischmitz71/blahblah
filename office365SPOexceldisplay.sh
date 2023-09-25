@@ -111,6 +111,59 @@ sudo apt-get install python3 python3-pip
 sudo pip3 install openpyxl
 
 
+#powershell to get file from office365
+cat > /home/$USER/getstuff.ps1 << EOL
+Remove-Item -Path "/home/$USER/*.xlsx" -Recurse -Force -Confirm:$false
+Remove-Item -Path "/home/$USER/*.csv" -Recurse -Force -Confirm:$false
+#Config Variables
+$SiteURL = "https://yourcompanyname.sharepoint.com/sites/yourSPOsitenamehere"
+$FileRelativeURL = "/sites/yoursitenamehere/Shared Documents/yourfilename.xlsx"
+$DownloadPath ="/home/$USER/"
+$username="accountame@yourdomain.com"
+$encpassword = convertto-securestring -String "thisisyoursuperlongPASSWORDtoaccessoffice365" -AsPlainText -Force
+$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $encpassword
+
+Try {
+    #Connect to PNP Online
+    Connect-PnPOnline -Url $SiteURL -Credentials $cred 
+Get-PnPContext
+    
+    #powershell download file from sharepoint online
+    Get-PnPFile -Url $FileRelativeURL -Path $DownloadPath -AsFile -FileName "yourfilename.xlsx"
+}
+catch {
+    write-host "Error: $($_.Exception.Message)" -foregroundcolor Red
+}
+python /home/$USER/runme.py
+#copy to apache folder
+sudo cp -f /home/$USER/output.csv  /var/www/html 
+sudo chown www-data:www-data /var/www/html/output.csv
+EOL
+
+
+#create python file to change to csv
+cat > /home/$USER/runme.py << EOL
+# remove line one
+import openpyxl
+from openpyxl import load_workbook
+wb = load_workbook(filename = '/home/$USER/yourfile.xlsx')
+ws = wb.active
+#ws.unmerge_cells(start_row=1, start_column=1, end_row=1, end_column=10)
+#ws.delete_rows(1)
+wb.save('/home/$USER/output.xlsx')
+#write CSV
+## XLSX TO CSV
+import openpyxl
+import csv
+wb = openpyxl.load_workbook('/home/$USER/output.xlsx')
+sh = wb.active # was .get_active_sheet()
+with open('/home/$USER/output.csv', 'w', newline="") as file_handle:
+    csv_writer = csv.writer(file_handle)
+    for row in sh.iter_rows(): # generator; was sh.rows
+        csv_writer.writerow([cell.value for cell in row])
+EOL
+
+
 
 
 
