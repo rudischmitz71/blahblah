@@ -5,6 +5,7 @@
 #note this doesnt work for MFA enabled users or subfolders under sharepoint unless the script is edited.
 read -p 'What password for wordpress db: ' passvar
 read -p 'What sharepoint website url example - "https://yourname.sharepoint.com/sites/sitename": ' spovar
+read -p 'What sharepoint sitename: ' sitenamevar
 read -p 'What Office365 username: ' o365username
 read -p 'What Office365 password: ' o365userpassword
 read -p 'What Office365 filename - filename.xlsx : ' o365filename
@@ -121,11 +122,11 @@ cat > /home/$USER/getstuff.ps1 << EOL
 Remove-Item -Path "/home/$USER/*.xlsx" -Recurse -Force -Confirm:$false
 Remove-Item -Path "/home/$USER/*.csv" -Recurse -Force -Confirm:$false
 #Config Variables
-$SiteURL = "https://yourcompanyname.sharepoint.com/sites/yourSPOsitenamehere"
-$FileRelativeURL = "/sites/yoursitenamehere/Shared Documents/yourfilename.xlsx"
+$SiteURL = "$spovar"
+$FileRelativeURL = "/sites/$sitenamevar/Shared Documents/$o365filename"
 $DownloadPath ="/home/$USER/"
-$username="accountame@yourdomain.com"
-$encpassword = convertto-securestring -String "thisisyoursuperlongPASSWORDtoaccessoffice365" -AsPlainText -Force
+$username="$o365username"
+$encpassword = convertto-securestring -String "$o365userpassword" -AsPlainText -Force
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $encpassword
 
 Try {
@@ -134,7 +135,7 @@ Try {
 Get-PnPContext
     
     #powershell download file from sharepoint online
-    Get-PnPFile -Url $FileRelativeURL -Path $DownloadPath -AsFile -FileName "yourfilename.xlsx"
+    Get-PnPFile -Url $FileRelativeURL -Path $DownloadPath -AsFile -FileName "$o365filename"
 }
 catch {
     write-host "Error: $($_.Exception.Message)" -foregroundcolor Red
@@ -173,4 +174,4 @@ EOL
 
 
 
-sudo reboot
+
