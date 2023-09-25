@@ -2,9 +2,14 @@
 
 #!/bin/bash
 # Ask the user for password to use inside wordpress
+#note this doesnt work for MFA enabled users
 read -p 'What password for wpdb: ' passvar
-echo
-echo Thank you we now have website to display on the tv $passvar
+read -p 'What sharepoint webiste url example - "https://yourname.sharepoint.com/sites/sitename": ' spovar
+read -p 'What Office365 username: ' o365username
+read -p 'What Office365 password: ' o365userpassword
+
+
+
 
 
 #enable ssh server
