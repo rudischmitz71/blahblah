@@ -42,7 +42,7 @@ cat > /home/$USER/myscript.sh << EOL
 #!/bin/sh
 # what this script does: start chromium
 
-chromium-browser --new-window --window-position=0,0 --window-size=3840,2160 --incognito --user-data-dir=/home/$USER/.config/chromium2 --enable-features=OverlayScrollbar,OverlayScrollbarFlashAfterAnyScrollUpdate,OverlayScrollbarFlashWhenMouseEnter --app="http://localhost" &
+chromium-browser --new-window --window-position=0,0 --window-size=3840,2160 --incognito ---data-dir=/home/$USER/.config/chromium2 --enable-features=OverlayScrollbar,OverlayScrollbarFlashAfterAnyScrollUpdate,OverlayScrollbarFlashWhenMouseEnter --app="http://localhost" &
 
 EOL
 
@@ -72,7 +72,7 @@ EOL
 cat >  /home/$USER/refresh.sh  << EOL
 #!/bin/sh
 # get office365 xlsx file
-pwsh /home/user/getstuff.ps1
+pwsh /home/$USER/getstuff.ps1
 WID=$(xdotool search --onlyvisible --class chromium|head -1)
 xdotool windowactivate ${WID}
 xdotool key ctrl+F5
