@@ -2,12 +2,12 @@
 
 #!/bin/bash
 # Ask the user for password to use inside wordpress
-#note this doesnt work for MFA enabled users
+#note this doesnt work for MFA enabled users or subfolders under sharepoint unless the script is edited.
 read -p 'What password for wpdb: ' passvar
 read -p 'What sharepoint webiste url example - "https://yourname.sharepoint.com/sites/sitename": ' spovar
 read -p 'What Office365 username: ' o365username
 read -p 'What Office365 password: ' o365userpassword
-
+read -p 'What Office365 filename - filename.xlsx : ' o365filename
 
 
 
