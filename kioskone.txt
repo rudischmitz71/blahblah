@@ -50,6 +50,8 @@ sudo chmod +x /home/$USER/myscript.sh
 
 
 ## black blackground and disable notifications
+mdkdir /home/$USER/.config/pcmanfm
+mkdir /home/$USER/.config/pcmanfm/LXDE-pi
 cat > /home/$USER/.config/pcmanfm/LXDE-pi/desktop-items-0.conf << EOL
 [*]
 desktop_bg=#000000
