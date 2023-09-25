@@ -71,8 +71,8 @@ EOL
 # refresh screen local via keyboard emulation
 cat >  /home/$USER/refresh.sh  << EOL
 #!/bin/sh
-# blah blah
-
+# get office365 xlsx file
+pwsh /home/user/getstuff.ps1
 WID=$(xdotool search --onlyvisible --class chromium|head -1)
 xdotool windowactivate ${WID}
 xdotool key ctrl+F5
