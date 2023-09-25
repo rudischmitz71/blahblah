@@ -1,10 +1,10 @@
 #get the website url you want to display on the kiosk
 
 #!/bin/bash
-# Ask the user for website
-read -p 'What website to display on the TV include https://: ' webvar
+# Ask the user for password to use inside wordpress
+read -p 'What password for wpdb: ' passvar
 echo
-echo Thank you we now have website to display on the tv $webvar
+echo Thank you we now have website to display on the tv $passvar
 
 
 #enable ssh server
@@ -42,7 +42,7 @@ cat > /home/$USER/myscript.sh << EOL
 #!/bin/sh
 # what this script does: start chromium
 
-chromium-browser --new-window --window-position=0,0 --window-size=3840,2160 --incognito --user-data-dir=/home/$USER/.config/chromium2 --enable-features=OverlayScrollbar,OverlayScrollbarFlashAfterAnyScrollUpdate,OverlayScrollbarFlashWhenMouseEnter --app=$webvar &
+chromium-browser --new-window --window-position=0,0 --window-size=3840,2160 --incognito --user-data-dir=/home/$USER/.config/chromium2 --enable-features=OverlayScrollbar,OverlayScrollbarFlashAfterAnyScrollUpdate,OverlayScrollbarFlashWhenMouseEnter --app="http://localhost" &
 
 EOL
 
@@ -89,5 +89,31 @@ echo "*/15 * * * * DISPLAY=:0 /home/$USER/refresh.sh" >> mycron
 #install new cron file
 crontab mycron
 rm mycron
+
+
+## install Wordpress locally
+sudo apt install apache2 -y
+sudo apt install php -y
+cd /var/www/html/
+sudo rm index.html
+sudo apt install mariadb-server php-mysql -y
+
+sudo rm /var/www/html/index.html
+cd /var/www/html/
+ls
+sudo wget http://wordpress.org/latest.tar.gz
+sudo tar xzf latest.tar.gz
+ls
+sudo mv wordpress/* .
+ls
+sudo rm -rf wordpress latest.tar.gz
+sudo chown -R www-data: /var/www/html/
+sudo mysql_secure_installation
+
+sudo mysql -e "CREATE DATABASE wordpressdb";
+sudo mysql -e "CREATE USER wpuser@localhost IDENTIFIED BY '$passvar'";
+mysql -e "GRANT ALL PRIVILEGES ON wordpressdb.* TO wordpressdb@localhost IDENTIFIED BY '$passvar'";
+
+
 
 sudo reboot
