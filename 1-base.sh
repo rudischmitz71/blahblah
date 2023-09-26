@@ -39,6 +39,7 @@ mkdir /home/$USER/.config/lxsession/LXDE-pi
 cp /etc/xdg/lxsession/LXDE-pi/autostart /home/$USER/.config/lxsession/LXDE-pi/
 sudo echo "sh /home/$USER/myscript.sh" >> /home/$USER/.config/lxsession/LXDE-pi/autostart
 
+#create the file that starts Chromium a displays a web page. myscript is what you edit to get a different web page on the TV. 
 cat > /home/$USER/myscript.sh << EOL
 #!/bin/sh
 # what this script does: start chromium
