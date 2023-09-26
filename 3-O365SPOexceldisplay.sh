@@ -2,19 +2,12 @@
 #display xlsx with wordpress local isntall
 
 #!/bin/bash
-# Ask the user for password to use inside wordpress
-#note this doesnt work for MFA enabled users or subfolders under sharepoint unless the script is edited.
-read -p 'What password for wordpress db: ' passvar
+#note this doesnt work for Office365 MFA enabled users or subfolders under sharepoint unless the script is edited.
 read -p 'What sharepoint website url example - "https://yourname.sharepoint.com/sites/sitename": ' spovar
 read -p 'What sharepoint sitename: ' sitenamevar
 read -p 'What Office365 username: ' o365username
 read -p 'What Office365 password: ' o365userpassword
 read -p 'What Office365 filename - filename.xlsx : ' o365filename
-
-## install Wordpress locally
-sudo apt install apache2 -y
-sudo apt-get update
-sudo apt-get install libssl1.1 libunwind8 -y
 
 #install powershell on pi4
 sudo apt-get install wget libssl1.1 libunwind8 -y
@@ -30,7 +23,6 @@ pwsh -Command {Install-Module -Name PnP.PowerShell -Force}
 sudo apt-get install python3 python3-pip
 sudo pip3 install openpyxl
 
-
 #powershell to get file from office365
 cat > /home/$USER/getstuff.ps1 << EOL
 Remove-Item -Path "/home/$USER/*.xlsx" -Recurse -Force -Confirm:$false
@@ -42,35 +34,29 @@ $DownloadPath ="/home/$USER/"
 $username="$o365username"
 $encpassword = convertto-securestring -String "$o365userpassword" -AsPlainText -Force
 $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $encpassword
-
-Try {
-    #Connect to PNP Online
-    Connect-PnPOnline -Url $SiteURL -Credentials $cred 
+Connect-PnPOnline -Url $SiteURL -Credentials $cred 
 Get-PnPContext
-    
-    #powershell download file from sharepoint online
+#powershell download file from sharepoint online
     Get-PnPFile -Url $FileRelativeURL -Path $DownloadPath -AsFile -FileName "$o365filename"
-}
-catch {
-    write-host "Error: $($_.Exception.Message)" -foregroundcolor Red
-}
+#edit xlsx file and get to csv
 python /home/$USER/runme.py
+
 #copy to apache folder
 sudo cp -f /home/$USER/output.csv  /var/www/html 
 sudo chown www-data:www-data /var/www/html/output.csv
 EOL
 
 
-#create python file to change to csv
+#create python file to change to excel contents around if needed and save as csv
 cat > /home/$USER/runme.py << EOL
-# remove line one
 import openpyxl
 from openpyxl import load_workbook
 wb = load_workbook(filename = '/home/$USER/yourfile.xlsx')
 ws = wb.active
-#ws.unmerge_cells(start_row=1, start_column=1, end_row=1, end_column=10)
-#ws.delete_rows(1)
+# UNMERGE CELLS ws.unmerge_cells(start_row=1, start_column=1, end_row=1, end_column=10)
+# DELETE A ROW ws.delete_rows(1)
 wb.save('/home/$USER/output.xlsx')
+
 #write CSV
 ## XLSX TO CSV
 import openpyxl
