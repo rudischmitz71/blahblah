@@ -2,6 +2,7 @@
 
 #!/bin/bash
 # Ask the user for website
+echo Example: https://yourwebsite.com/folder
 read -p 'What website to display on the TV include https://: ' webvar
 echo
 echo Thank you we now have website to display on the tv $webvar
