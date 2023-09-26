@@ -68,18 +68,12 @@ show_mounts=0
 EOL
 
 
-
-
 # refresh screen local via keyboard emulation
-cat >  /home/$USER/refresh.sh  << EOL
-#!/bin/sh
-# blah blah
-
-WID=$(xdotool search --onlyvisible --class chromium|head -1)
-xdotool windowactivate ${WID}
-xdotool key ctrl+F5
-
-EOL
+echo '#!/bin/sh' > /home/$USER/refresh.sh 
+echo '# blah blah' >> /home/$USER/refresh.sh 
+echo 'WID=$(xdotool search --onlyvisible --class chromium|head -1)' >> /home/$USER/refresh.sh 
+echo 'xdotool windowactivate ${WID}' >> /home/$USER/refresh.sh 
+echo 'xdotool key ctrl+F5' >> /home/$USER/refresh.sh 
 
 sudo chmod +x refresh.sh 
 
