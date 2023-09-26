@@ -26,9 +26,5 @@ sudo mysql_secure_installation
 
 sudo mysql -e "CREATE DATABASE wordpressdb";
 sudo mysql -e "CREATE USER wpuser@localhost IDENTIFIED BY '$passvar'";
-mysql -e "GRANT ALL PRIVILEGES ON wordpressdb.* TO wordpressdb@localhost IDENTIFIED BY '$passvar'";
+sudo mysql -e "GRANT ALL PRIVILEGES ON wordpressdb.* TO wordpressdb@localhost IDENTIFIED BY '$passvar'";
 
-read -p "After this reboot go to http://youripaddressonraspberrypi/wp-admin to get to wordpress. Hit any key to continue"
-
-
-sudo reboot
