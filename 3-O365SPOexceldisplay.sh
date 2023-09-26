@@ -31,27 +31,24 @@ sudo apt-get install python3 python3-pip
 sudo pip3 install openpyxl
 
 #powershell to get file from office365
-cat > /home/$USER/getstuff.ps1 << EOL
-Remove-Item -Path "/home/$USER/*.xlsx" -Recurse -Force -Confirm:$false
-Remove-Item -Path "/home/$USER/*.csv" -Recurse -Force -Confirm:$false
-#Config Variables
-$SiteURL = "$spovar"
-$FileRelativeURL = "/sites/$sitenamevar/Shared Documents/$o365filename"
-$DownloadPath ="/home/$USER/"
-$username="$o365username"
-$encpassword = convertto-securestring -String "$o365userpassword" -AsPlainText -Force
-$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $encpassword
-Connect-PnPOnline -Url $SiteURL -Credentials $cred 
-Get-PnPContext
-#powershell download file from sharepoint online
-    Get-PnPFile -Url $FileRelativeURL -Path $DownloadPath -AsFile -FileName "$o365filename"
-#edit xlsx file and get to csv
-python /home/$USER/runme.py
-
-#copy to apache folder
-sudo cp -f /home/$USER/output.csv  /var/www/html 
-sudo chown www-data:www-data /var/www/html/output.csv
-EOL
+echo 'Remove-Item -Path "/home/$USER/*.xlsx" -Recurse -Force -Confirm:$false' > /home/$USER/getstuff.ps1 
+echo 'Remove-Item -Path "/home/$USER/*.csv" -Recurse -Force -Confirm:$false' >> /home/$USER/getstuff.ps1' 
+echo '#Config Variables' >> /home/$USER/getstuff.ps1' 
+echo '$SiteURL = "$spovar"' >> /home/$USER/getstuff.ps1' 
+echo '$FileRelativeURL = "/sites/$sitenamevar/Shared Documents/$o365filename"' >> /home/$USER/getstuff.ps1' 
+echo '$DownloadPath ="/home/$USER/"' >> /home/$USER/getstuff.ps1' 
+echo '$username="$o365username"' >> /home/$USER/getstuff.ps1' 
+echo '$encpassword = convertto-securestring -String "$o365userpassword" -AsPlainText -Force' >> /home/$USER/getstuff.ps1' 
+echo '$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $encpassword' >> /home/$USER/getstuff.ps1' 
+echo 'Connect-PnPOnline -Url $SiteURL -Credentials $cred ' >> /home/$USER/getstuff.ps1' 
+echo 'Get-PnPContext' >> /home/$USER/getstuff.ps1' 
+echo '#powershell download file from sharepoint online' >> /home/$USER/getstuff.ps1' 
+echo 'Get-PnPFile -Url $FileRelativeURL -Path $DownloadPath -AsFile -FileName "$o365filename"' >> /home/$USER/getstuff.ps1' 
+echo '#edit xlsx file and get to csv' >> /home/$USER/getstuff.ps1' 
+echo 'python /home/$USER/runme.py' >> /home/$USER/getstuff.ps1' 
+echo '#copy to apache folder' >> /home/$USER/getstuff.ps1' 
+echo 'sudo cp -f /home/$USER/output.csv  /var/www/html' >> /home/$USER/getstuff.ps1' 
+echo 'sudo chown www-data:www-data /var/www/html/output.csv' >> /home/$USER/getstuff.ps1' 
 
 
 #create python file to change to excel contents around if needed and save as csv
