@@ -92,4 +92,3 @@ echo "*/15 * * * * DISPLAY=:0 /home/$USER/refresh.sh" >> mycron
 crontab mycron
 rm mycron
 
-sudo reboot
