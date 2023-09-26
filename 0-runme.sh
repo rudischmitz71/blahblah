@@ -6,6 +6,6 @@ sudo chmod +x /home/$USER/1-base.sh
 sudo chmod +x /home/$USER/2-wordpress.sh
 sudo chmod +x /home/$USER/3-O365SPOexceldisplay.sh
 
-/home/$USER//1-base.sh
+/home/$USER/1-base.sh
 /home/$USER/2-wordpress.sh
 /home/$USER/3-O365SPOexceldisplay.sh
