@@ -1,5 +1,5 @@
 #step 2
-#display xlsx with wordpress local isntall
+#display xlsx with wordpress local install
 
 #!/bin/bash
 #note this doesnt work for Office365 MFA enabled users or subfolders under sharepoint unless the script is edited.
@@ -8,6 +8,14 @@ read -p 'What sharepoint sitename: ' sitenamevar
 read -p 'What Office365 username: ' o365username
 read -p 'What Office365 password: ' o365userpassword
 read -p 'What Office365 filename - filename.xlsx : ' o365filename
+
+
+#install wp-cli wordpress cli and some modules
+curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+sudo chmod +x wp-cli.phar
+sudo mv wp-cli.phar /usr/local/bin/wp
+
+
 
 #install powershell on pi4
 sudo apt-get install wget libssl1.1 libunwind8 -y
