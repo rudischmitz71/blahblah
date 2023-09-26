@@ -20,14 +20,15 @@ sudo mv wordpress/* .
 ls
 sudo rm -rf wordpress latest.tar.gz
 sudo chown -R www-data: /var/www/html/
-# secure mariadb installations
+# secure mariadb installation
+read -p "now running mariadb secure install script. Press any key to resume ..."
 sudo mysql_secure_installation
 
 sudo mysql -e "CREATE DATABASE wordpressdb";
 sudo mysql -e "CREATE USER wpuser@localhost IDENTIFIED BY '$passvar'";
 mysql -e "GRANT ALL PRIVILEGES ON wordpressdb.* TO wordpressdb@localhost IDENTIFIED BY '$passvar'";
 
-read -p "After this reboot go to http://youripaddressonraspberrypi/wp-admin Hit any key to continue"
-pause
+read -p "After this reboot go to http://youripaddressonraspberrypi/wp-admin to get to wordpress. Hit any key to continue"
+
 
 sudo reboot
