@@ -77,12 +77,5 @@ echo 'xdotool key ctrl+F5' >> /home/$USER/refresh.sh
 
 sudo chmod +x refresh.sh 
 
-# refresh every 15 minutes
-#write out current crontab
-crontab -l > mycron
-#echo new cron into cron file
-echo "*/15 * * * * DISPLAY=:0 /home/$USER/refresh.sh" >> mycron
-#install new cron file
-crontab mycron
-rm mycron
+
 
