@@ -26,5 +26,5 @@ sudo mysql_secure_installation
 
 sudo mysql -e "CREATE DATABASE wordpressdb";
 sudo mysql -e "CREATE USER wpuser@localhost IDENTIFIED BY '$passvar'";
-sudo mysql -e "GRANT ALL ON wordpressdb.* TO wordpressdb@localhost IDENTIFIED BY '$passvar'";
+sudo mysql -e "GRANT ALL ON wordpressdb.* TO wpuser@localhost IDENTIFIED BY '$passvar'";
 
