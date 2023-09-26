@@ -76,6 +76,8 @@ with open('/home/$USER/output.csv', 'w', newline="") as file_handle:
         csv_writer.writerow([cell.value for cell in row])
 EOL
 
+read -p "After this reboot go to http://youripaddressonraspberrypi/wp-admin to get to wordpress. Hit any key to continue"
+sudo reboot
 
 
 
