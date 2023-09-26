@@ -1,8 +1,7 @@
-#step 2
-#display xlsx with wordpress local install
-
 #!/bin/bash
+#display xlsx with wordpress local install
 #note this doesnt work for Office365 MFA enabled users or subfolders under sharepoint unless the script is edited.
+
 read -p 'What sharepoint website url example - "https://yourname.sharepoint.com/sites/sitename": ' spovar
 read -p 'What sharepoint sitename: ' sitenamevar
 read -p 'What Office365 username: ' o365username
