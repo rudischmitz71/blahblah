@@ -8,7 +8,8 @@ echo
 echo Thank you we now have website to display on the tv $webvar
 
 #disable screen blanking
-sudo sed ' consoleblank=0' /boot/cmdline.txt
+sudo sed -i ' 1 s/.*/& consoleblank=0/' /boot/cmdline.txt
+
 #enable ssh server
 sudo systemctl enable ssh 
 sudo systemctl start ssh
