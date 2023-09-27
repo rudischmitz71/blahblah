@@ -42,7 +42,7 @@ echo "\$DownloadPath =\"/home/$USER/\"" >> /home/$USER/getstuff.ps1
 echo "\$username=\"$o365username\"" >> /home/$USER/getstuff.ps1
 echo "\$encpassword = convertto-securestring -String \"$o365userpassword\" -AsPlainText -Force" >> /home/$USER/getstuff.ps1 
 echo "\$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist \$username, \$encpassword" >> /home/$USER/getstuff.ps1
-echo "Connect-PnPOnline -Url $SiteURL -Credentials $cred " >> /home/$USER/getstuff.ps1
+echo "Connect-PnPOnline -Url \$SiteURL -Credentials \$cred " >> /home/$USER/getstuff.ps1
 echo "Get-PnPContext" >> /home/$USER/getstuff.ps1
 echo "#powershell download file from sharepoint online" >> /home/$USER/getstuff.ps1
 echo "Get-PnPFile -Url \$FileRelativeURL -Path \$DownloadPath -AsFile -FileName \"$o365filename\"" >> /home/$USER/getstuff.ps1 
