@@ -56,7 +56,7 @@ echo "sudo chown www-data:www-data /var/www/html/output.csv" >> /home/$USER/gets
 cat > /home/$USER/runme.py << EOL
 import openpyxl
 from openpyxl import load_workbook
-wb = load_workbook(filename = '/home/$USER/new.xlsx')
+wb = load_workbook(filename = '/home/$USER/$o365filename')
 ws = wb.active
 # UNMERGE CELLS ws.unmerge_cells(start_row=1, start_column=1, end_row=1, end_column=10)
 # DELETE A ROW ws.delete_rows(1)
