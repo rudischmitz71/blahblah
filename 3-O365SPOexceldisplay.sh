@@ -32,8 +32,8 @@ sudo pip3 install openpyxl
 
 #powershell to get file from office365
 #powershell to get file from office365
-echo "Remove-Item -Path \"/home/$USER/*.xlsx\" -Recurse -Force -Confirm:$false" > /home/$USER/getstuff.ps1 
-echo "Remove-Item -Path \"/home/$USER/*.csv\" -Recurse -Force -Confirm:$false" >> /home/$USER/getstuff.ps1 
+echo "Remove-Item -Path \"/home/$USER/*.xlsx\" -Recurse -Force -Confirm:\$false" > /home/$USER/getstuff.ps1 
+echo "Remove-Item -Path \"/home/$USER/*.csv\" -Recurse -Force -Confirm:\$false" >> /home/$USER/getstuff.ps1 
 echo "#Config Variables" >> /home/$USER/getstuff.ps1
 echo "$SiteURL = \"$spovar\"" >> /home/$USER/getstuff.ps1
 echo "$FileRelativeURL = \"/sites/$sitenamevar/Shared Documents/$o365filename\"" >> /home/$USER/getstuff.ps1
