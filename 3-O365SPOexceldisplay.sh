@@ -24,7 +24,8 @@ sudo tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7
 sudo chmod +x /opt/microsoft/powershell/7/pwsh
 sudo ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
 rm /tmp/powershell.tar.gz
-pwsh -Command {Install-Module -Name PnP.PowerShell -Force}
+echo "Install-Module -Name PnP.PowerShell -Force" > /home/$USER/temp.ps1
+pwsh /home/$USER/temp.ps1 -NonInteractive
 
 #install python and openpyxl
 sudo apt-get install python3 python3-pip
@@ -44,7 +45,7 @@ echo "\$cred = new-object -typename System.Management.Automation.PSCredential -a
 echo "Connect-PnPOnline -Url $SiteURL -Credentials $cred " >> /home/$USER/getstuff.ps1
 echo "Get-PnPContext" >> /home/$USER/getstuff.ps1
 echo "#powershell download file from sharepoint online" >> /home/$USER/getstuff.ps1
-echo "Get-PnPFile -Url $FileRelativeURL -Path $DownloadPath -AsFile -FileName \"$o365filename\"" >> /home/$USER/getstuff.ps1 
+echo "Get-PnPFile -Url \$FileRelativeURL -Path \$DownloadPath -AsFile -FileName \"$o365filename\"" >> /home/$USER/getstuff.ps1 
 echo "#edit xlsx file and get to csv" >> /home/$USER/getstuff.ps1
 echo "python /home/$USER/runme.py" >> /home/$USER/getstuff.ps1
 echo "#copy to apache folder" >> /home/$USER/getstuff.ps1
