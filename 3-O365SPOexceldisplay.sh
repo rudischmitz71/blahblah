@@ -60,8 +60,6 @@ ws = wb.active
 # UNMERGE CELLS ws.unmerge_cells(start_row=1, start_column=1, end_row=1, end_column=10)
 # DELETE A ROW ws.delete_rows(1)
 wb.save('/home/$USER/output.xlsx')
-
-#write CSV
 ## XLSX TO CSV
 import openpyxl
 import csv
