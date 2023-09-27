@@ -72,6 +72,8 @@ EOL
 
 # refresh screen local via keyboard emulation
 echo '#!/bin/sh' > /home/$USER/refresh.sh 
+#get new file from O365
+echo "pwsh /home/$USER/getstuff.ps1" >> /home/$USER/refresh.sh
 echo '# blah blah' >> /home/$USER/refresh.sh 
 echo 'WID=$(xdotool search --onlyvisible --class chromium|head -1)' >> /home/$USER/refresh.sh 
 echo 'xdotool windowactivate ${WID}' >> /home/$USER/refresh.sh 
