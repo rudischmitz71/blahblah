@@ -3,7 +3,7 @@ cd /var/www/html
 sudo wp plugin install --activate "fullwidth-templates" --allow-root
 sudo wp plugin install --activate "wpdatatables" --allow-root
 
-
+cd ~
 # refresh every 15 minutes
 #write out current crontab
 crontab -l > mycron
