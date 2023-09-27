@@ -71,6 +71,6 @@ with open('/home/$USER/output.csv', 'w', newline="") as file_handle:
         csv_writer.writerow([cell.value for cell in row])
 EOL
 
-read -p "After this reboot 1. Setup wordpress. 2. Then run the 4-finalize-tablepi.sh file. Hit any key to continue"
+read -p "After this reboot 1. Setup wordpress. 2. Then run the 4-finalize-tablepi.sh on your Desktop. Hit any key to continue"
 sudo reboot
 
