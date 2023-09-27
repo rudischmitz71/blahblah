@@ -7,7 +7,8 @@ read -p 'What website to display on the TV include https://: ' webvar
 echo
 echo Thank you we now have website to display on the tv $webvar
 
-
+#disable screen blanking
+sudo sed ' consoleblank=0' /boot/cmdline.txt
 #enable ssh server
 sudo systemctl enable ssh 
 sudo systemctl start ssh
