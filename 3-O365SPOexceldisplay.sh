@@ -38,7 +38,7 @@ echo "#Config Variables" >> /home/$USER/getstuff.ps1
 echo "$SiteURL = \"$spovar\"" >> /home/$USER/getstuff.ps1
 echo "$FileRelativeURL = \"/sites/$sitenamevar/Shared Documents/$o365filename\"" >> /home/$USER/getstuff.ps1
 echo "$DownloadPath =\"/home/$USER/\"" >> /home/$USER/getstuff.ps1
-echo "$username="$o365username\"" >> /home/$USER/getstuff.ps1
+echo "$username=\"$o365username\"" >> /home/$USER/getstuff.ps1
 echo "$encpassword = convertto-securestring -String \"$o365userpassword\" -AsPlainText -Force" >> /home/$USER/getstuff.ps1 
 echo "$cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $encpassword" >> /home/$USER/getstuff.ps1
 echo "Connect-PnPOnline -Url $SiteURL -Credentials $cred " >> /home/$USER/getstuff.ps1
@@ -48,10 +48,10 @@ echo "Get-PnPFile -Url $FileRelativeURL -Path $DownloadPath -AsFile -FileName \"
 echo "#edit xlsx file and get to csv" >> /home/$USER/getstuff.ps1
 echo "python /home/$USER/runme.py" >> /home/$USER/getstuff.ps1
 echo "#copy to apache folder" >> /home/$USER/getstuff.ps1
-echo "sudo cp -f /home/$USER/output.csv  /var/www/html" >> /home/$USER/getstuff.ps1
+echo "sudo cp -f /home/$USER/output.csv /var/www/html" >> /home/$USER/getstuff.ps1
 echo "sudo chown www-data:www-data /var/www/html/output.csv" >> /home/$USER/getstuff.ps1
 
-#create python file to change to excel contents around if needed and save as csv
+# create python file to change to excel contents around if needed and save as csv
 cat > /home/$USER/runme.py << EOL
 import openpyxl
 from openpyxl import load_workbook
@@ -73,9 +73,4 @@ EOL
 
 read -p "After this reboot 1. Setup wordpress. 2. Then run the 4-finalize-tablepi.sh file. Hit any key to continue"
 sudo reboot
-
-
-
-
-
 
