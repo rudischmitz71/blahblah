@@ -14,7 +14,7 @@ cd ~
 
 
 #autohide taskbar
-sudo sed -i "s/autohide=.*/autohide=1/" /etc/xdg/lxpanel/LXDE-pi/panels/panel 
+sudo sed -i "s/autohide=.*/autohide=1/" /etc/xdg/lxpanel/LXDE-pi/panels/panel
 sudo sed -i "s/heightwhenhidden=.*/heightwhenhidden=0/" /etc/xdg/lxpanel/LXDE-pi/panels/panel
 
 #hide mouse when no movement allow programmed refresh
@@ -36,7 +36,11 @@ sudo sed -i "s#</applications>#<application class=\"*\"> <decor>no</decor>  </ap
 mkdir /home/$USER/.config/lxsession
 mkdir /home/$USER/.config/lxsession/LXDE-pi
 cp /etc/xdg/lxsession/LXDE-pi/autostart /home/$USER/.config/lxsession/LXDE-pi/
+sudo echo '@xset s noblank' >> /home/$USER/.config/lxsession/LXDE-pi/autostart
+sudo echo '@xset -dpms' >> /home/$USER/.config/lxsession/LXDE-pi/autostart
+sudo echo '@xset s off' >> /home/$USER/.config/lxsession/LXDE-pi/autostart
 sudo echo "sh /home/$USER/myscript.sh" >> /home/$USER/.config/lxsession/LXDE-pi/autostart
+
 
 #create the file that starts Chromium a displays a web page. myscript is what you edit to get a different web page on the TV. 
 cat > /home/$USER/myscript.sh << EOL
