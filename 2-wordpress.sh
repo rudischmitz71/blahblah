@@ -5,7 +5,7 @@ read -p 'What password for wpdb: ' passvar
 
 ## install Wordpress locally
 sudo apt install apache2 -y
-sudo apt install php -y
+sudo apt install php php-gd -y
 cd /var/www/html/
 sudo rm index.html
 sudo apt install mariadb-server php-mysql -y
