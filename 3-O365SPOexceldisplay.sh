@@ -2,19 +2,16 @@
 #display xlsx with wordpress local install
 #note this doesnt work for Office365 MFA enabled users or subfolders under sharepoint unless the script is edited.
 
-read -p 'What sharepoint website url example - "https://yourname.sharepoint.com/sites/sitename": ' spovar
+read -p 'What is your sharepoint site url: "https://yourname.sharepoint.com/sites/sitename": ' spovar
 read -p 'What sharepoint sitename: ' sitenamevar
 read -p 'What Office365 username: ' o365username
 read -p 'What Office365 password: ' o365userpassword
-read -p 'What Office365 filename - filename.xlsx : ' o365filename
-
+read -p 'What is the excel filename: filename.xlsx : ' o365filename
 
 #install wp-cli wordpress cli and some modules
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 sudo chmod +x wp-cli.phar
 sudo mv wp-cli.phar /usr/local/bin/wp
-
-
 
 #install powershell on pi4
 sudo apt-get install wget libssl1.1 libunwind8 -y
@@ -72,6 +69,6 @@ with open('/home/$USER/output.csv', 'w', newline="") as file_handle:
         csv_writer.writerow([cell.value for cell in row])
 EOL
 
-read -p "After this reboot 1. Setup wordpress. 2. Then run the 4-finalize-tablepi.sh on your Desktop. Hit any key to continue"
+read -p "After this reboot 1. Setup wordpress. 2. Then run the 4-finalize-tablepi.sh on the Desktop. Hit any key to continue"
 sudo reboot
 
