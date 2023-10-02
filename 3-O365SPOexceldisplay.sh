@@ -72,6 +72,6 @@ EOL
 #fix wordpress folder permissions
 sudo chown www-data:www-data /var/www/html/wp-content/upgrade/
 
-read -p "After this reboot 1. Setup wordpress. 2. Then run the 4-finalize-tablepi.sh on the Desktop. Hit any key to continue"
+read -p "After this reboot and setup wordpress. Then run the 4-finalize-tablepi.sh file on the Desktop. Hit Enter key to continue"
 sudo reboot
 
