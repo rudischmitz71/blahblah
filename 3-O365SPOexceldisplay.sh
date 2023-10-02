@@ -6,7 +6,7 @@ read -p 'What is your sharepoint site url: "https://yourname.sharepoint.com/site
 read -p 'What sharepoint sitename: ' sitenamevar
 read -p 'What Office365 username: ' o365username
 read -p 'What Office365 password: ' o365userpassword
-echo 'What is the excel filename:'
+echo "What is the excel filename:"
 read -p 'Teams Sharepoint "General/yourfilename.xlsx" or regular Sharepoint "yourfilename.xlsx" : ' o365filename
 
 #install wp-cli wordpress cli and some modules
