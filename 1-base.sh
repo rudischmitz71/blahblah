@@ -70,8 +70,13 @@ show_trash=0
 show_mounts=0
 EOL
 
+# remove notifications from taskbar
+cd $HOME/.config/lxpanel/LXDE-pi/panels/
+wget https://raw.githubusercontent.com/ugotapi/tablepi/main/panel
+
 
 # refresh screen local via keyboard emulation
+cd ~
 echo '#!/bin/sh' > /home/$USER/refresh.sh 
 #get new file from O365
 echo "pwsh /home/$USER/getstuff.ps1" >> /home/$USER/refresh.sh
