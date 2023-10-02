@@ -21,7 +21,7 @@ ls
 sudo rm -rf wordpress latest.tar.gz
 sudo chown -R www-data: /var/www/html/
 # secure mariadb installation
-read -p "now running mariadb secure install script. Press any key to resume ..."
+read -p "now running mariadb secure install script. Press Enter key to resume ..."
 sudo mysql_secure_installation
 
 sudo mysql -e "CREATE DATABASE wordpressdb";
