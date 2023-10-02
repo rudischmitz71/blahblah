@@ -9,11 +9,7 @@ read -p 'What Office365 password: ' o365userpassword
 echo "What is the excel filename:"
 read -p 'Teams Sharepoint "General/yourfilename.xlsx" or regular Sharepoint "yourfilename.xlsx" : ' o365filename
 
-#install wp-cli wordpress cli and some modules
-cd ~
-curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-sudo chmod +x wp-cli.phar
-sudo mv wp-cli.phar /usr/local/bin/wp
+
 
 #install powershell on pi4
 sudo apt-get install wget libssl1.1 libunwind8 -y
