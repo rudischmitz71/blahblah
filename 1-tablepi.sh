@@ -183,8 +183,6 @@ with open('/home/$USER/output.csv', 'w', newline="") as file_handle:
         csv_writer.writerow([cell.value for cell in row])
 EOL
 
-#fix wordpress folder permissions
-sudo chown www-data:www-data /var/www/html/wp-content/upgrade/
 
 read -p "After this reboot 1. Setup wordpress. 2. Then run the 4-finalize-tablepi.sh on the Desktop. Hit any key to continue"
 sudo reboot
