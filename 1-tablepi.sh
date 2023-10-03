@@ -16,7 +16,7 @@ while true; do
     read -p "Is this a Sharepoint Online site or a Teams Sharepoint Site?" st
     case $st in
         [Ss]* ) $o365filename=$o365filenamepost;break;;
-        [Tt]* ) $o365filename='General/'"$o365filenamepost";break;;
+        [Tt]* ) $o365filename="General\/$o365filenamepost";break;;
         * ) echo "Please answer s or t";;
     esac
 done
