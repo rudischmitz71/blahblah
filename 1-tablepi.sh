@@ -1,6 +1,7 @@
 #!/bin/bash
+ifconfig wlan0
 # Ask the user for info
-read -p 'What website to display on TV include https:// part -  http://ipaddress ' webvar
+read -p 'What is your local ip address include the http:// part -  http://10.10.10.10' webvar
 read -p 'What password to use for the wordpress user wpuser: ' passvar
 read -p 'What is your .onmicrosoft.com Domain Name?  DOMAINNAME.onmicrosoft.com: ' spovar
 read -p 'What sharepoint sitename: ' sitenamevar
@@ -13,19 +14,19 @@ read -p 'What is the excel filename: yourfilename.xlsx" : ' o365filenamepost
 while true; do
     read -p "Is this a Sharepoint Online site or a Teams Sharepoint Site? s or t " st
     case $st in
-        [Ss]* ) $o365filename=$o365filenamepost;break;;
-        [Tt]* ) $o365filename="General/{$o365filenamepost}";break;;
+        [Ss]* ) o365filename="$o365filenamepost";break;;
+        [Tt]* ) o365filename='General/'$o365filenamepost;break;;
         * ) echo "Please answer s or t";;
     esac
 done
 
 
-echo $webvar
-echo $passvar
-echo $spovar
-echo $sitenamevar
-echo $o365username
-echo $o365userpassword
+echo local ip address of your pi: $webvar
+echo wordpress database password: $passvar
+echo Office 365 domain name: $spovar
+echo Sharepoint site name: $sitenamevar
+echo Office 365 username: $o365username
+echo Office365 user password: $o365userpassword
 echo Excel file: $o365filename
 echo This is your sharepoint url https://$spovar.sharepoint.com/sites/$sitenamevar
 while true; do
