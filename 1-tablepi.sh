@@ -15,8 +15,8 @@ read -p 'What is the excel filename: yourfilename.xlsx" : ' o365filenamepost
 while true; do
     read -p "Is this a regular SharePoint Site hit S or is it a Teams Sharepoint Site hit T?" st
     case $st in
-        [Ss]* ) $o365filename= "${o365filenamepost}"; break;;
-        [Tt]* ) $o365filename= "General/${o365filenamepost}"; break;;
+        [Ss]* ) $o365filename="${o365filenamepost}"; break;;
+        [Tt]* ) $o365filename="General/${o365filenamepost}"; break;;
         * ) echo "Please answer S or T.";;
     esac
 done
@@ -26,9 +26,9 @@ done
 echo $webvar
 echo $passvar
 echo $spovar
-echo $sitevar
+echo $sitenamevar
 echo $o365username
-echo $o365password
+echo $o365userpassword
 echo $o365filename
 echo This is your sharepoint url https://$spovar.sharepoint.com/sites/$o365filename
 while true; do
