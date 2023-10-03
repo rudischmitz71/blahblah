@@ -12,9 +12,18 @@ read -p 'What sharepoint sitename: ' sitenamevar
 read -p 'What Office365 username: ' o365username
 read -p 'What Office365 password: ' o365userpassword
 echo "What is the excel filename:"
-read -p 'Teams Sharepoint "General/yourfilename.xlsx" or regular Sharepoint "yourfilename.xlsx" : ' o365filename
+read -p 'What is the excel filename: yourfilename.xlsx" : ' o365filenamepost
 
 
+# Teams or regular sharepoint the urls are different
+while true; do
+    read -p "Is this a regular SharePoint Site hit S or is it a Teams Sharepoint Site hit T?" st
+    case $st in
+        [Ss]* ) $o365filename= "${o365filenamepost}"; break;;
+        [Tt]* ) $o365filename= "General/${o365filenamepost}"; break;;
+        * ) echo "Please answer S or T.";;
+    esac
+done
 
 
 
