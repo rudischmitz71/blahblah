@@ -172,7 +172,7 @@ sudo pip3 install openpyxl
 echo "Remove-Item -Path \"/home/$USER/*.xlsx\" -Recurse -Force -Confirm:\$false" > /home/$USER/getstuff.ps1 
 echo "Remove-Item -Path \"/home/$USER/*.csv\" -Recurse -Force -Confirm:\$false" >> /home/$USER/getstuff.ps1 
 echo "#Config Variables" >> /home/$USER/getstuff.ps1
-echo "\$SiteURL = \"$spovar\"" >> /home/$USER/getstuff.ps1
+echo "\$SiteURL = \"https://$spovar.sharepoint.com/sites/$sitenamevar\"" >> /home/$USER/getstuff.ps1
 echo "\$FileRelativeURL = \"/sites/$sitenamevar/Shared Documents/$o365filename\"" >> /home/$USER/getstuff.ps1
 echo "\$DownloadPath =\"/home/$USER/\"" >> /home/$USER/getstuff.ps1
 echo "\$username=\"$o365username\"" >> /home/$USER/getstuff.ps1
