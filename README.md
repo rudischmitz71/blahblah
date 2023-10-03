@@ -6,7 +6,7 @@ These are shell scripts to turn a Raspberry pi 4+ device into a dashboard for yo
 - Then convert to csv and display it in Wordpress on the locally attached TV. 
 
 
-All these builds involve using Raspbian on a Raspberry Pi. The device is then modified to behave as digital signage. Nothing but the content is displayed on the screen. Also there is no kiosk service to pay for. It’s Raspbian so it’s fairly secure and doesn’t drop out being maintained like the other pi based digital signage setups. 
+This involves using Raspbian on a Raspberry Pi. The device is then modified to behave as digital signage. Nothing but the content is displayed on the screen. Also there is no kiosk service to pay for. It’s Raspbian so it’s fairly secure and doesn’t drop out being maintained like the other Pi based digital signage setups. 
 
 Hardware Items you will need:
 - Raspberry Pi4 device with 8GB of RAM. 
