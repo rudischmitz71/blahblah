@@ -118,7 +118,7 @@ sudo chmod +x refresh.sh
 
 ## install Wordpress locally
 sudo apt install apache2 -y
-sudo apt install php php-gd -y
+sudo apt install php php-gd php-curl php-dom php-imagick php-mbstring php-zip php-intl -y
 cd /var/www/html/
 sudo rm index.html
 sudo apt install mariadb-server php-mysql -y
