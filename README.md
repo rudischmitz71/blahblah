@@ -10,7 +10,7 @@ This involves using Raspbian on a Raspberry Pi. The device is then modified to b
 
 Hardware Items you will need:
 - Raspberry Pi4 device with 8GB of RAM. 
-- MicroSD card - 16GB MicroSD for the Pi operating system
+- MicroSD card for the Pi operating system recommend at least 16GB
 - Pi power supply
 - HDMI cable
 - Pi4 case 
