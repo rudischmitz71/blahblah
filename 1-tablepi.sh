@@ -2,15 +2,12 @@
 
 #!/bin/bash
 # Ask the user for website
-echo Example: https://yourwebsite.com/folder
-read -p 'What website to display on the TV screen include the https:// part: ' webvar
-# Ask the user for password to use inside wordpress
+read -p 'What website to display on TV include https:// part -  http://ipaddress ' webvar
 read -p 'What password to use for the wordpress user wpuser: ' passvar
 read -p 'What is your .onmicrosoft.com Domain Name?  DOMAINNAME.onmicrosoft.com: ' spovar
 read -p 'What sharepoint sitename: ' sitenamevar
 read -p 'What Office365 username: ' o365username
 read -p 'What Office365 password: ' o365userpassword
-echo "What is the excel filename:"
 read -p 'What is the excel filename: yourfilename.xlsx" : ' o365filenamepost
 
 # Teams or regular sharepoint the urls are different
