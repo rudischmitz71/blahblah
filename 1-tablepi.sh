@@ -181,7 +181,7 @@ echo "\$cred = new-object -typename System.Management.Automation.PSCredential -a
 echo "Connect-PnPOnline -Url \$SiteURL -Credentials \$cred " >> /home/$USER/getstuff.ps1
 echo "Get-PnPContext" >> /home/$USER/getstuff.ps1
 echo "#powershell download file from sharepoint online" >> /home/$USER/getstuff.ps1
-echo "Get-PnPFile -Url \$FileRelativeURL -Path \$DownloadPath -AsFile -FileName \"$o365filename\"" >> /home/$USER/getstuff.ps1 
+echo "Get-PnPFile -Url \$FileRelativeURL -Path \$DownloadPath -AsFile -FileName \"$o365filenamepost\"" >> /home/$USER/getstuff.ps1 
 echo "#edit xlsx file and get to csv" >> /home/$USER/getstuff.ps1
 echo "python /home/$USER/runme.py" >> /home/$USER/getstuff.ps1
 echo "#copy to apache folder" >> /home/$USER/getstuff.ps1
