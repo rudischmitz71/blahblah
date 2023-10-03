@@ -11,10 +11,10 @@ read -p 'What is the excel filename: yourfilename.xlsx" : ' o365filenamepost
 
 # Teams or regular sharepoint the urls are different
 while true; do
-    read -p "Is this a Sharepoint Online site or a Teams Sharepoint Site?" st
+    read -p "Is this a Sharepoint Online site or a Teams Sharepoint Site? s or t " st
     case $st in
         [Ss]* ) $o365filename=$o365filenamepost;break;;
-        [Tt]* ) $o365filename="General\/$o365filenamepost";break;;
+        [Tt]* ) $o365filename="General/{$o365filenamepost}";break;;
         * ) echo "Please answer s or t";;
     esac
 done
