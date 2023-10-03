@@ -3,8 +3,7 @@
 #!/bin/bash
 # Ask the user for website
 echo Example: https://yourwebsite.com/folder
-read -p 'What website to display on the TV include https://: ' webvar
-#get the website url you want to display on the kiosk
+read -p 'What website to display on the TV screen include the https:// part: ' webvar
 # Ask the user for password to use inside wordpress
 read -p 'What password for wpdb: ' passvar
 read -p 'What is your sharepoint site url: "https://yourname.sharepoint.com/sites/sitename": ' spovar
