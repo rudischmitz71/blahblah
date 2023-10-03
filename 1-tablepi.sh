@@ -1,5 +1,5 @@
 #!/bin/bash
-ifconfig wlan0
+ifconfig
 # Ask the user for info
 read -p 'What is your ip address in a url - http://10.10.10.10 ' webvar
 read -p 'What password to use for the wordpress user wpuser: ' passvar
