@@ -192,7 +192,7 @@ echo "sudo chown www-data:www-data /var/www/html/output.csv" >> /home/$USER/gets
 cat > /home/$USER/runme.py << EOL
 import openpyxl
 from openpyxl import load_workbook
-wb = load_workbook(filename = '/home/$USER/$o365filename')
+wb = load_workbook(filename = '/home/$USER/$o365filenamepost')
 ws = wb.active
 # UNMERGE CELLS ws.unmerge_cells(start_row=1, start_column=1, end_row=1, end_column=10)
 # DELETE A ROW ws.delete_rows(1)
@@ -200,7 +200,7 @@ wb.save('/home/$USER/output.xlsx')
 ## XLSX TO CSV
 import openpyxl
 import csv
-wb = openpyxl.load_workbook('/home/$USER/$o365filename')
+wb = openpyxl.load_workbook('/home/$USER/$o365filenamepost')
 sh = wb.active # was .get_active_sheet()
 with open('/home/$USER/output.csv', 'w', newline="") as file_handle:
     csv_writer = csv.writer(file_handle)
