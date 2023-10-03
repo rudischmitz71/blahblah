@@ -17,8 +17,7 @@ Hardware Items you will need:
 - USB keyboard and mouse. This will only be used for initial setup.
 - 4K TV with HDMI port 
 - Raspbian OS with desktop 64-bit image downloaded
-- An Office 365 account with read access to a sharepoint site. Note this user does not have need licenses assigned to it. Note: this will not work with an MFA enabled account. 
-
+- An Office 365 account with read access to a sharepoint site. Notes: This user does not have need licenses assigned to it. This will not work with an MFA enabled account. just create an unlicensed user, lengthen the password and the go to the Sharepoint Site and add the user to read only part of the site. 
 
 Tablepi - What you get: Pi4 device that shows a web page of an Excel file on the TV. When the excel file is changed in Office365 it will show on the TV eventually.  Every 15 minutes the Pi will download the latest data and display the changes. 
 
