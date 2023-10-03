@@ -1,7 +1,5 @@
-#get the website url you want to display on the kiosk
-
 #!/bin/bash
-# Ask the user for website
+# Ask the user for info
 read -p 'What website to display on TV include https:// part -  http://ipaddress ' webvar
 read -p 'What password to use for the wordpress user wpuser: ' passvar
 read -p 'What is your .onmicrosoft.com Domain Name?  DOMAINNAME.onmicrosoft.com: ' spovar
@@ -38,7 +36,7 @@ while true; do
         * ) echo "Please answer yes or no.";;
     esac
 done
-
+echo continuing
 
 
 #enable ssh server
