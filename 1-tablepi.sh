@@ -1,7 +1,7 @@
 #!/bin/bash
 ifconfig wlan0
 # Ask the user for info
-read -p 'What is your local ip address include the http:// part -  http://10.10.10.10 ' webvar
+read -p 'What is your ip address in a url - http://10.10.10.10 ' webvar
 read -p 'What password to use for the wordpress user wpuser: ' passvar
 read -p 'What is your .onmicrosoft.com Domain Name?  DOMAINNAME.onmicrosoft.com: ' spovar
 read -p 'What sharepoint sitename: ' sitenamevar
