@@ -46,8 +46,8 @@ sudo systemctl start ssh
 cd ~
 
 
-#autohide taskbar
-sudo cp /etc/xdg/lxpanel/LXDE-pi/panels/panel /home/$USER/.config/lxpanel/LXDE-pi/panels
+#autohide taskbar and disable updater notifications
+sudo awk 'NR==FNR{if (/  type=updater/) for (i=-1;i<=3;i++) del[NR+i]; next} !(FNR in del)' /etc/xdg/lxpanel/LXDE-pi/panels/panel /etc/xdg/lxpanel/LXDE-pi/panels/panel > /home/$USER/.config/lxpanel/LXDE-pi/panels/panel
 sudo sed -i "s/autohide=.*/autohide=1/"  /home/$USER/.config/lxpanel/LXDE-pi/panels
 sudo sed -i "s/heightwhenhidden=.*/heightwhenhidden=0/"  /home/$USER/.config/lxpanel/LXDE-pi/panels
 
