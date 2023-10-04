@@ -24,6 +24,7 @@ What you get: Pi4 device that shows a web page of an Excel file on the TV. When 
 STEPS:
 ![Screenshot 2023-10-04 081245](https://github.com/ugotapi/tablepi/assets/14945441/340e5350-cdb0-488d-a4d7-961ee9eaa2b1)
 
+
 SCREENSHOT FROM PI:
 ![Screenshot 2023-10-04 10_06_18](https://github.com/ugotapi/tablepi/assets/14945441/26421569-2a52-4148-8935-c441f6f16434)
 
