@@ -47,8 +47,10 @@ cd ~
 
 
 #autohide taskbar
-sudo sed -i "s/autohide=.*/autohide=1/" /etc/xdg/lxpanel/LXDE-pi/panels/panel
-sudo sed -i "s/heightwhenhidden=.*/heightwhenhidden=0/" /etc/xdg/lxpanel/LXDE-pi/panels/panel
+sudo cp /etc/xdg/lxpanel/LXDE-pi/panels/panel /home/$USER/.config/lxpanel/LXDE-pi/panels
+sudo sed -i "s/autohide=.*/autohide=1/"  /home/$USER/.config/lxpanel/LXDE-pi/panels
+sudo sed -i "s/heightwhenhidden=.*/heightwhenhidden=0/"  /home/$USER/.config/lxpanel/LXDE-pi/panels
+
 
 #hide mouse when no movement allow programmed refresh
 sudo apt install xdotool unclutter -y
