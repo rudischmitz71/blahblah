@@ -25,9 +25,6 @@ STEPS:
 ![Screenshot 2023-10-04 081245](https://github.com/ugotapi/tablepi/assets/14945441/340e5350-cdb0-488d-a4d7-961ee9eaa2b1)
 
 
-SCREENSHOT FROM PI:
-![Screenshot 2023-10-04 10_06_18](https://github.com/ugotapi/tablepi/assets/14945441/26421569-2a52-4148-8935-c441f6f16434)
-
 Photo of 4k screen:
 ![IMG_0336](https://github.com/ugotapi/tablepi/assets/14945441/4afd854f-4e01-4f9c-ba29-6a49110b38cd)
 
