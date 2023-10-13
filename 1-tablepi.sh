@@ -46,18 +46,35 @@ sudo systemctl start ssh
 cd ~
 
 
-#autohide taskbar and disable updater notifications
-sudo awk 'NR==FNR{if (/  type=updater/) for (i=-1;i<=3;i++) del[NR+i]; next} !(FNR in del)' /etc/xdg/lxpanel/LXDE-pi/panels/panel /etc/xdg/lxpanel/LXDE-pi/panels/panel > /home/$USER/.config/lxpanel/LXDE-pi/panels/panel
+
+
+
+
+
+
+
+
+
+
+
+#re-enable X display server vs new Wayland. Becuse old tools for X dont work in Wayland. 
+sudo sed -i "s/greeter-session=pi-greeter-wayfire/greeter-session=pi-greeter/" /etc/lightdm/lightdm.conf
+sudo sed -i "s/user-session=LXDE-pi-wayfire/user-session=LXDE-pi-x/" /etc/lightdm/lightdm.conf
+sudo sed -i "s/autologin-session=LXDE-pi-wayfire/autologin-session=LXDE-pi-x/" /etc/lightdm/lightdm.conf
+
+#autohide taskbar by copying panel file to user profile and editing it disable updater notifications
+sudo cp -a -f /etc/xdg/lxpanel /home/$USER/.config/
+sudo awk 'NR==FNR{if (/  type=updater/) for (i=-1;i<=3;i++) del[NR+i]; next} !(FNR in del)' /etc/xdg/lxpanel/LXDE-pi/panels/panel /etc/xdg/lxpanel/LXDE-pi/panels/panel | sudo dd of=/home/$USER/.config/lxpanel/LXDE-pi/panels/panel
+# edit file to hide panel
 sudo sed -i "s/autohide=.*/autohide=1/" /home/$USER/.config/lxpanel/LXDE-pi/panels/panel
 sudo sed -i "s/heightwhenhidden=.*/heightwhenhidden=0/" /home/$USER/.config/lxpanel/LXDE-pi/panels/panel
+sudo sed -i '/  point_at_menu=0/a notifications=0' /home/$USER/.config/lxpanel/LXDE-pi/panels/panel
+
 
 
 #hide mouse when no movement allow programmed refresh
 sudo apt install xdotool unclutter -y
 
-
-#change setting to openbox
-sudo sed -i "s/window_manager=.*/window_manager=openbox/" /etc/xdg/lxsession/LXDE-pi/desktop.conf
 
 # no window border
 sudo mkdir ~/.config/openbox
@@ -67,7 +84,7 @@ sudo sed -i "s/<keepBorder>yes/<keepBorder>no/" ~/.config/openbox/rc.xml
 # no decorations
 sudo sed -i "s#</applications>#<application class=\"*\"> <decor>no</decor>  </application> </applications>#" ~/.config/openbox/rc.xml
 
-
+#no blank screen
 mkdir /home/$USER/.config/lxsession
 mkdir /home/$USER/.config/lxsession/LXDE-pi
 cp /etc/xdg/lxsession/LXDE-pi/autostart /home/$USER/.config/lxsession/LXDE-pi/
@@ -75,6 +92,11 @@ sudo echo '@xset s noblank' >> /home/$USER/.config/lxsession/LXDE-pi/autostart
 sudo echo '@xset -dpms' >> /home/$USER/.config/lxsession/LXDE-pi/autostart
 sudo echo '@xset s off' >> /home/$USER/.config/lxsession/LXDE-pi/autostart
 sudo echo "sh /home/$USER/myscript.sh" >> /home/$USER/.config/lxsession/LXDE-pi/autostart
+
+#change setting to openbox
+sudo cp /etc/xdg/lxsession/LXDE-pi/desktop.conf /home/$USER/.config/lxsession/LXDE-pi/desktop.conf
+sudo sed -i "s/window_manager=.*/window_manager=openbox/" /home/$USER/.config/lxsession/LXDE-pi/desktop.conf
+
 
 
 #create the file that starts Chromium a displays a web page. myscript is what you edit to get a different web page on the TV. 
@@ -154,10 +176,10 @@ curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.pha
 sudo chmod +x wp-cli.phar
 sudo mv wp-cli.phar /usr/local/bin/wp
 
-#install powershell on pi4
+#install powershell for Linux on pi4
 sudo apt-get install wget libssl1.1 libunwind8 -y
 sudo mkdir -p /opt/microsoft/powershell/7
-wget -O /tmp/powershell.tar.gz https://github.com/PowerShell/PowerShell/releases/download/v7.3.7/powershell-7.3.7-linux-arm64.tar.gz 
+wget -O /tmp/powershell.tar.gz https://github.com/PowerShell/PowerShell/releases/download/v7.3.8/powershell-7.3.8-linux-arm64.tar.gz 
 sudo tar zxf /tmp/powershell.tar.gz -C /opt/microsoft/powershell/7
 sudo chmod +x /opt/microsoft/powershell/7/pwsh
 sudo ln -s /opt/microsoft/powershell/7/pwsh /usr/bin/pwsh
