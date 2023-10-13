@@ -1,7 +1,7 @@
 # tablepi
 These are shell scripts to turn a Raspberry pi 4+ device into a dashboard for your data on a large screen TV. 
 - Using Raspbian Bookworm based 64-bit OS on the pi4 8GB device.
-- Use Python, Powershell, Chromium, WordPress, WPDatatables a Wordpress plugin 
+- Use Python, Powershell, Chromium, WordPress, WPDatatables a Wordpress plugin and Wordpress plugin fullwidth-templates
 - We dowload an Excel file from SharePoint online site or Teams Sharepoint Online. Then convert to csv and display it in Wordpress on the locally attached TV. 
 
 
