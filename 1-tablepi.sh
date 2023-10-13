@@ -188,8 +188,7 @@ echo "Install-Module -Name PnP.PowerShell -Force" > /home/$USER/temp.ps1
 pwsh /home/$USER/temp.ps1 -NonInteractive
 
 #install python and openpyxl
-sudo apt-get install python3 python3-pip
-sudo pip3 install openpyxl
+sudo apt-get install python3 python3-pip python3-openpyxl
 
 #powershell to get file from office365
 #powershell to get file from office365
