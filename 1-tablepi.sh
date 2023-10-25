@@ -7,7 +7,7 @@ read -p 'What is your .onmicrosoft.com Domain Name?  DOMAINNAME.onmicrosoft.com:
 read -p 'What sharepoint sitename: ' sitenamevar
 read -p 'What Office365 username: ' o365username
 read -p 'What Office365 password: ' o365userpassword
-read -p 'What is the excel filename: yourfilename.xlsx" : ' o365filenamepost
+read -p 'What is the excel filename: yourfilename.xlsx : ' o365filenamepost
 
 
 # Teams or regular sharepoint the urls are different
