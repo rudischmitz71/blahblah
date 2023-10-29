@@ -2,7 +2,7 @@
 These are shell scripts to turn a Raspberry pi 4+ device into a dashboard for your data on a large screen TV. 
 - Using Raspbian Bookworm based 64-bit OS on the pi4 8GB device.
 - Use Python, Powershell, Chromium, WordPress, WPDatatables a Wordpress plugin and Wordpress plugin fullwidth-templates
-- We dowload an Excel file from SharePoint online site or Teams Sharepoint Online. Then convert to csv and display it in Wordpress on the locally attached TV. 
+- We dowload an Excel file from SharePoint online site or Teams SharePoint online. Then convert to csv and display it in Wordpress on the locally attached TV. 
 
 
 This involves using Raspbian on a Raspberry Pi. The device is then modified to behave as digital signage. Nothing but the content is displayed on the screen. Also there is no kiosk service to pay for. It’s Raspbian so it’s secure and doesn’t drop out of being maintained quickly like the other Pi based digital signage setups might. 
