@@ -18,7 +18,7 @@ Hardware Items you will need:
 - Raspbian OS with desktop 64-bit image downloaded
 - An Office 365 account with read access to a sharepoint site. Notes: This user does not have need licenses assigned to it. This will not work with an MFA enabled account. Just create an unlicensed user with no group memeberships and lengthen the password.  Then go to the Sharepoint Site and add the user to view only part of the site. 
 
-Passwords: I would recommend a long password on the Office365 Limited user account. That user account cannot have MFA set on ot. I would also recommend to use a separate long password for the regular sudo user account. Then for all the mariadb and WordPress accounts I'd make it the same as the regular account just to keep it simple. You won't have multiple users in this setup. 
+Passwords: I would recommend a long password on the Office365 Limited user account. That user account cannot have MFA set on it. I would also recommend to use a separate long password for the regular sudo user account. Then for all the mariadb and WordPress accounts I'd make it the same as the regular account just to keep it simple. You won't have multiple users in this setup. 
 
 What you get: Pi4 device that shows a web page of an Excel file on the TV. When the excel file is changed in Office365, it will show on the TV after 15 minutes.  
 
