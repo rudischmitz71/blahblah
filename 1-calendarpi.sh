@@ -27,17 +27,6 @@ sudo systemctl start ssh
 cd ~
 
 
-
-
-
-
-
-
-
-
-
-
-
 #re-enable X display server vs new Wayland. Becuse old tools for X dont work in Wayland. 
 sudo sed -i "s/greeter-session=pi-greeter-wayfire/greeter-session=pi-greeter/" /etc/lightdm/lightdm.conf
 sudo sed -i "s/user-session=LXDE-pi-wayfire/user-session=LXDE-pi-x/" /etc/lightdm/lightdm.conf
