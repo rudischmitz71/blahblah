@@ -1,13 +1,13 @@
 # tablepi
 These are shell scripts to turn a Raspberry pi 4+ device into a dashboard for your data on a large screen TV. 
-- Using Raspbian Bookworm based 64-bit OS on the pi4 8GB device.
+- Using Raspberry Pi OS Bookworm based 64-bit OS on the pi4 8GB device.
 - Use Python, Powershell, Chromium, WordPress, WPDatatables a Wordpress plugin and Wordpress plugin fullwidth-templates
 - We dowload an Excel file from SharePoint online site or Teams SharePoint online. Then convert to csv and display it in Wordpress on the locally attached TV. 
 
 Youtube walkthrough: [link
 ](https://youtu.be/YeW6VvDHDKQ)
 
-This involves using Raspbian on a Raspberry Pi. The device is then modified to behave as digital signage. Nothing but the content is displayed on the screen. Also there is no Digital Signage service to pay for. It’s Raspbian so it’s secure and doesn’t drop out of being maintained quickly like the other Pi based digital signage setups might. 
+This involves using Raspberry Pi OS on a Raspberry Pi. The device is then modified to behave as digital signage. Nothing but the content is displayed on the screen. Also there is no Digital Signage service to pay for. It’s Raspbian so it’s secure and doesn’t drop out of being maintained quickly like the other Pi based digital signage setups might. 
 
 Hardware Items you will need:
 - Raspberry Pi4 device with 8GB of RAM. 
@@ -17,7 +17,7 @@ Hardware Items you will need:
 - Pi4 case 
 - USB keyboard and mouse. This will only be used for initial setup.
 - 4K TV with HDMI port - This is your TV mounted on the wall. 
-- Raspbian OS with desktop 64-bit image downloaded
+- Raaspberry Pi OS with desktop 64-bit image downloaded
 - An Office 365 account with read access to a sharepoint site. Notes: This user does not have need licenses assigned to it. This will not work with an MFA enabled account. Just create an unlicensed user with no group memeberships and lengthen the password.  Then go to the Sharepoint Site and add the user to view only part of the site.
 - This assumes your Excel file is in the Root folder of your SharePoint Online site. The scripts or input could be edited to use a subfolder. 
 
