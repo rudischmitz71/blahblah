@@ -17,7 +17,7 @@ Hardware Items you will need:
 - Pi4 case 
 - USB keyboard and mouse. This will only be used for initial setup.
 - 4K TV with HDMI port - This is your TV mounted on the wall. 
-- Raaspberry Pi OS with desktop 64-bit image downloaded
+- Raspberry Pi OS with desktop 64-bit image downloaded
 - An Office 365 account with read access to a sharepoint site. Notes: This user does not have need licenses assigned to it. This will not work with an MFA enabled account. Just create an unlicensed user with no group memeberships and lengthen the password.  Then go to the Sharepoint Site and add the user to view only part of the site.
 - This assumes your Excel file is in the Root folder of your SharePoint Online site. The scripts or input could be edited to use a subfolder. 
 
